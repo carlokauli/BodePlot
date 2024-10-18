@@ -113,12 +113,12 @@ void MainWindow::calculateBodeDiagram() {
         }
 
         // Speichern der Amplitudenreserve bei Phase = -180°
-        if (phaseData[i] <= -180 && phaseData[i] >= -185 &&!foundGainMargin) { // Überprüfen ob Phase unter -180° gesunken ist, aber >-185° und Reserve noch nicht gefunden
+        if (phaseData[i] <= -180 &&!foundGainMargin) { // Überprüfen ob Phase unter -180° gesunken ist und Reserve noch nicht gefunden
             gainMargin =  amplitudeData[i]; // Reserve ist negativer zugehöriger Amplitudenwert
             foundGainMargin = true; // Status auf true setzen, damit nicht weiter gesucht wird
         }
         // Speichern der Phasenreserve bei Amplitude 0 dB
-        if (amplitudeData[i] <= 0  && amplitudeData[i] >= -3 && !foundPhaseMargin) { // Überprüfen ob Amplitude unter 0dB gesunken ist, aber >-3dB und Reserve noch nicht gefunden
+        if (amplitudeData[i] <= 0 && !foundPhaseMargin) { // Überprüfen ob Amplitude unter 0dB gesunken ist und Reserve noch nicht gefunden
             phaseMargin = 180 + phaseData[i]; // Reserve ist zugehöriger Phasenwert + 180°
             foundPhaseMargin = true; // Status auf true setzen, damit nicht weiter gesucht wird
         }
